@@ -335,8 +335,9 @@ class EmailValidator {
         if email.index(index, offsetBy: 8) >= email.endIndex {
             return false
         }
+        
 
-        let ipv6 = String(email[index ... email.index(index, offsetBy: 4)])
+        let ipv6 = email[index ... email.index(index, offsetBy: 4)]
         if ipv6.lowercased() == "ipv6:" {
             index = email.index(index, offsetBy: ipv6.count)
             if !skipIPv6Literal(text: email, index: &index) {

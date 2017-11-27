@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
   s.name         = "EmailValidator"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "A simple (but correct) library for validating email addresses."
 
   s.description  = <<-DESC
