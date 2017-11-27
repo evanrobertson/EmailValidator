@@ -282,6 +282,12 @@ class EmailValidator {
         return compact ? colons < 7 : colons == 7
     }
 
+    /// Check whether the given email is a valid address based on rfc5322 & rfc653x
+    /// - Parameters:
+    ///     - email: The email address to test
+    ///     - allowTopLevelDomains: Allow top level domains (e.g. `postmaster@dk`)
+    ///     - allowInternational: Allow international addresses (e.g. cyrillic or chinese)
+    /// - Returns: Bool indicating whether the email is valid or not
     class func validate(email: String, allowTopLevelDomains: Bool = false, allowInternational: Bool = false) -> Bool {
         var index = email.startIndex
 
@@ -353,6 +359,8 @@ class EmailValidator {
 }
 
 extension Character {
+    /// Will return the UInt32 unicode value for first scalar in Character
+    /// Returns: UInt32 value of unicode character
     func unicodeScalarCodePoint() -> UInt32 {
         return unicodeScalars.first!.value
     }
