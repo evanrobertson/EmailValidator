@@ -20,6 +20,6 @@ EmailValidator.validate("email@domain.com")
 
 ```
 EmailValidator.validate(email: "email@domain.com",
-                        allowTopLevelDomains: true, // true/false, will allow international addresses (e.g cyrillic or chinese)
-                        allowInternational: true) 	// true/false, will allow top level domains
+                        allowTopLevelDomains: true,  // true/false, will allow top level domains
+                        allowInternational: true)    // true/false, will allow international addresses (e.g cyrillic or chinese)
 ```
