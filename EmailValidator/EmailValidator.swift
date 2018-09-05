@@ -8,7 +8,7 @@
 
 import Foundation
 
-class EmailValidator {
+public class EmailValidator {
 
     struct SubDomainType: OptionSet {
         let rawValue: Int
@@ -288,7 +288,7 @@ class EmailValidator {
     ///     - allowTopLevelDomains: Allow top level domains (e.g. `postmaster@dk`)
     ///     - allowInternational: Allow international addresses (e.g. cyrillic or chinese)
     /// - Returns: Bool indicating whether the email is valid or not
-    class func validate(email: String, allowTopLevelDomains: Bool = false, allowInternational: Bool = false) -> Bool {
+    public class func validate(email: String, allowTopLevelDomains: Bool = false, allowInternational: Bool = false) -> Bool {
         var index = email.startIndex
 
         if email.isEmpty || email.endIndex.encodedOffset >= 255 {
