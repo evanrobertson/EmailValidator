@@ -119,10 +119,10 @@ public class EmailValidator {
         while index < text.endIndex && isDomain(c: text[index], allowInternational: allowInternational, type: &type) {
             index = text.index(after: index)
         }
-
         let previousIndex = text.index(before: index)
-        let offsetIndex = text.index(index, offsetBy: -startIndex.encodedOffset)
-        return offsetIndex.encodedOffset < 64 && text[previousIndex] != "-"
+        
+        let offsetIndex = text.index(index, offsetBy: -startIndex.utf16Offset(in: text))
+        return offsetIndex.utf16Offset(in: text) < 64 && text[previousIndex] != "-"
     }
 
     private class func skipDomain(text: String, index: inout String.Index, allowTopLevelDomains: Bool, allowInternational: Bool) -> Bool {
@@ -198,7 +198,7 @@ public class EmailValidator {
                 index = text.index(after: index)
             }
 
-            if index == startIndex || text.index(index, offsetBy: -startIndex.encodedOffset).encodedOffset > 3 || value > 255 {
+            if index == startIndex || text.index(index, offsetBy: -startIndex.utf16Offset(in: text)).utf16Offset(in: text) > 3 || value > 255 {
                 return false
             }
 
@@ -244,7 +244,7 @@ public class EmailValidator {
                 return compact ? colons < 6 : colons == 6
             }
 
-            var count = index.encodedOffset - startIndex.encodedOffset
+            var count = index.utf16Offset(in: text) - startIndex.utf16Offset(in: text)
             if count > 4 {
                 return false
             }
@@ -259,7 +259,7 @@ public class EmailValidator {
                 index = text.index(after: index)
             }
 
-            count = index.encodedOffset - startIndex.encodedOffset
+            count = index.utf16Offset(in: text) - startIndex.utf16Offset(in: text)
             if count > 2 {
                 return false
             }
@@ -291,7 +291,7 @@ public class EmailValidator {
     public class func validate(email: String, allowTopLevelDomains: Bool = false, allowInternational: Bool = false) -> Bool {
         var index = email.startIndex
 
-        if email.isEmpty || email.endIndex.encodedOffset >= 255 {
+        if email.isEmpty || email.endIndex.utf16Offset(in: email) >= 255 {
             return false
         }
 
@@ -316,7 +316,7 @@ public class EmailValidator {
         }
 
         let nextIndex = email.index(after: index)
-        if nextIndex >= email.endIndex || index.encodedOffset > 64 || email[index] != "@" {
+        if nextIndex >= email.endIndex || index.utf16Offset(in: email) > 64 || email[index] != "@" {
             return false
         }
 
