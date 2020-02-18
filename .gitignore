@@ -42,7 +42,7 @@ playground.xcworkspace
 # Packages/
 # Package.pins
 .build/
-
+.swiftpm
 # CocoaPods - Refactored to standalone file
 
 # Carthage - Refactored to standalone file
