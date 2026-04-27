@@ -1,6 +1,10 @@
 EmailValidator
 ==============
 
+> [!CAUTION]
+> This repository has not been updated in a long time, I am not longer working on iOS and Swift projects. For the time being this will be archived, I suggest you look at other libraries for you email validation requirements.
+
+
 A simple (but correct) library for validating email addresses. Supports mail addresses as defined in rfc5322 as well as the new Internationalized Mail Address standards (rfc653x). Based on https://github.com/jstedfast/EmailValidation
 
 ### Installation
